@@ -1,13 +1,7 @@
 ﻿class AndAnotherOne {
 
-    static Modes = ['txt', 'img']
-
-    // === SETTING ===
-    static option = 0 // 0: Bottom ; 1: Result ; 2: Floating
-    // === SETTING ===
-
     static butt() {
-        this.Modes.forEach((mode) => {
+        ['txt', 'img'].forEach((mode) => {
             const generate = document.getElementById(mode + '2img_generate')
             const tab = document.getElementById('tab_' + mode + '2img')
 
@@ -30,7 +24,7 @@
     }
 
     static result() {
-        this.Modes.forEach((mode) => {
+        ['txt', 'img'].forEach((mode) => {
             const generate = document.getElementById(mode + '2img_generate')
             const box = document.getElementById(mode + '2img_results')
 
@@ -52,7 +46,7 @@
     }
 
     static fixed() {
-        this.Modes.forEach((mode) => {
+        ['txt', 'img'].forEach((mode) => {
             const generate = document.getElementById(mode + '2img_generate')
             const tab = document.getElementById('tab_' + mode + '2img')
 
@@ -73,10 +67,22 @@
             tab.append(btn)
         })
     }
+
 }
 
 onUiLoaded(async () => {
-    switch (AndAnotherOne.option) {
+    // 0: Bottom ; 1: Result ; 2: Floating
+    const config = gradioApp().getElementById('setting_moar_generate').querySelectorAll('label')
+    let option = -1;
+
+    for (let i = 0; i < 3; i++) {
+        if (config[i].classList.contains('selected')) {
+            option = i;
+            break;
+        }
+    }
+
+    switch (option) {
         default:
             AndAnotherOne.butt()
             break;
