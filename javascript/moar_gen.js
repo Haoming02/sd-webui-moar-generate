@@ -1,9 +1,9 @@
 ﻿class AndAnotherOne {
 
     static butt() {
-        ['txt', 'img'].forEach((mode) => {
-            const generate = document.getElementById(mode + '2img_generate')
-            const tab = document.getElementById('tab_' + mode + '2img')
+        ['txt2img', 'img2img', 'extras'].forEach((mode) => {
+            const generate = document.getElementById(mode + '_generate')
+            const tab = document.getElementById('tab_' + mode)
 
             const btn = generate.cloneNode()
 
@@ -24,9 +24,9 @@
     }
 
     static result() {
-        ['txt', 'img'].forEach((mode) => {
-            const generate = document.getElementById(mode + '2img_generate')
-            const box = document.getElementById(mode + '2img_results')
+        ['txt2img', 'img2img', 'extras'].forEach((mode) => {
+            const generate = document.getElementById(mode + '_generate')
+            const box = document.getElementById(mode + '_results')
 
             const btn = generate.cloneNode()
 
@@ -46,9 +46,9 @@
     }
 
     static fixed() {
-        ['txt', 'img'].forEach((mode) => {
-            const generate = document.getElementById(mode + '2img_generate')
-            const tab = document.getElementById('tab_' + mode + '2img')
+        ['txt2img', 'img2img', 'extras'].forEach((mode) => {
+            const generate = document.getElementById(mode + '_generate')
+            const tab = document.getElementById('tab_' + mode)
 
             const btn = generate.cloneNode()
 
