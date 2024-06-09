@@ -61,7 +61,7 @@
 
 }
 
-(typeof onUiLoadedReady != null) ? onUiLoadedReady : onUiLoaded(async () => {
+((typeof onUiLoadedReady !== 'undefined') ? onUiLoadedReady : onUiLoaded)(async () => {
     // 0: Bottom ; 1: Result ; 2: Floating
     const config = gradioApp().getElementById('setting_moar_generate').querySelectorAll('label');
     let option = -1;
