@@ -1,18 +1,48 @@
-from modules import script_callbacks, shared
-import gradio as gr
+from modules.script_callbacks import on_ui_settings
+from modules.shared import OptionInfo, opts
+from gradio import Radio
 
 
-def add_ui_settings():
-    shared.opts.add_option(
+def add_settings():
+    section = ("moar", "Moar Generate")
+
+    opts.add_option(
         "moar_generate",
-        shared.OptionInfo(
-            "Bottom",
-            "Position of the 2nd Generate Button",
-            gr.Radio,
-            lambda: {"choices": ["Bottom", "Result", "Floating"]},
-            section=("ui", "User interface"),
-        ).needs_reload_ui(),
+        OptionInfo(
+            "Off",
+            "Position of the extra Generate button",
+            Radio,
+            lambda: {"choices": ("Off", "Bottom", "Result", "Floating")},
+            section=section,
+            category_id="ui",
+        ),
+    )
+
+    opts.add_option(
+        "moar_upscale",
+        OptionInfo(
+            "Off",
+            "Position of the extra Upscale button",
+            Radio,
+            lambda: {"choices": ("Off", "Bottom", "Result", "Floating")},
+            section=section,
+            category_id="ui",
+        ).info("for txt2img"),
+    )
+
+    opts.add_option(
+        "moar_floating",
+        OptionInfo(
+            "Bottom-Right",
+            "Floating Corner",
+            Radio,
+            lambda: {
+                "choices": ("Bottom-Right", "Bottom-Left", "Top-Right", "Top-Left")
+            },
+            section=section,
+            category_id="ui",
+        ),
     )
 
 
-script_callbacks.on_ui_settings(add_ui_settings)
+on_ui_settings(add_settings)

@@ -1,9 +1,17 @@
 ﻿# SD Webui Moar Generate
-This is an Extension for the [Automatic1111 Webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) which adds another **Generate** button, 
-for when you have too many Extensions active but don't wanna scroll all the way up every single time... 
+This is an Extension for the [Automatic1111 Webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which adds another **Generate** button... That's it.
 
-## Setting
-You can switch between different modes in the `User interface` section of the **Settings**:
-- **Bottom**: Add the button at the bottom of the page
-- **Result**: Add the button under the generated result
-- **Floating**: Add the button to the fixed bottom right corner
+> Also supports both old & new [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge)
+
+## Settings
+
+> You can switch between different modes in the `Moar Generate` section under the <ins>User Interface</ins> category of the **Settings** tab
+
+- **Bottom**: Add the button at the bottom of the tab
+- **Result**: Add the button under the generation gallery
+- **Floating**: Add the button to a fixed corner
+
+#### New
+
+- You can now add an extra **Upscale** button as well
+- You can now choose the corner for the **Floating** mode
