@@ -1,17 +1,17 @@
 ﻿# SD Webui Moar Generate
-This is an Extension for the [Automatic1111 Webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which adds another **Generate** button... That's it.
+This is an Extension for the [Automatic1111 Webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which adds an extra **Generate** button... That's it.
 
-> Also supports both old & new [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge)
+> Compatible with [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge)
+
+**New:** Now supports `Interrupt` as well~
 
 ## Settings
 
-> You can switch between different modes in the `Moar Generate` section under the <ins>User Interface</ins> category of the **Settings** tab
+> These options are in the `Moar Generate` section under the <ins>User Interface</ins> category of the **Settings** tab
 
-- **Bottom**: Add the button at the bottom of the tab
-- **Result**: Add the button under the generation gallery
-- **Floating**: Add the button to a fixed corner
+- <ins><b>Position</b></ins>
+    - **Bottom**: Add the button at the bottom of the tab
+    - **Result**: Add the button under the generation gallery
+    - **Floating**: Add the button to the specified corner
 
-#### New
-
-- You can now add an extra **Upscale** button as well
-- You can now choose the corner for the **Floating** mode
+- You can also add an extra **Upscale** button *(for `txt2img` tab)*

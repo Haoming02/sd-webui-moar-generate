@@ -12,7 +12,7 @@ def add_settings():
             "Off",
             "Position of the extra Generate button",
             Radio,
-            lambda: {"choices": ("Off", "Bottom", "Result", "Floating")},
+            {"choices": ("Off", "Bottom", "Result", "Floating")},
             section=section,
             category_id="ui",
         ),
@@ -24,7 +24,7 @@ def add_settings():
             "Off",
             "Position of the extra Upscale button",
             Radio,
-            lambda: {"choices": ("Off", "Bottom", "Result", "Floating")},
+            {"choices": ("Off", "Bottom", "Result", "Floating")},
             section=section,
             category_id="ui",
         ).info("for txt2img"),
@@ -34,14 +34,12 @@ def add_settings():
         "moar_floating",
         OptionInfo(
             "Bottom-Right",
-            "Floating Corner",
+            "Corner to place the button",
             Radio,
-            lambda: {
-                "choices": ("Bottom-Right", "Bottom-Left", "Top-Right", "Top-Left")
-            },
+            {"choices": ("Bottom-Right", "Bottom-Left", "Top-Right", "Top-Left")},
             section=section,
             category_id="ui",
-        ),
+        ).info("for <b>Floating</b> Position"),
     )
 
 
