@@ -1,14 +1,15 @@
 ﻿(function () {
     class AndAnotherOne {
-
         /** @type {HTMLButtonElement} */
         static #moar = null;
 
         /** @returns {string} "Bottom-Right" | "Bottom-Left" | "Top-Right" | "Top-Left" */
         static #parseCorner() {
             const config_floating = document.getElementById("setting_moar_floating");
-            return config_floating.querySelector("label.selected")
-                .querySelector("span").textContent.trim();
+            return config_floating
+                .querySelector("label.selected")
+                .querySelector("span")
+                .textContent.trim();
         }
 
         /** @returns {HTMLButtonElement} */
@@ -21,7 +22,7 @@
             moar.id = `${btn.id}_moar`;
             moar.removeAttribute("title");
             moar.style.border = "none";
-            moar.onclick = () => { btn.click(); }
+            moar.onclick = () => { btn.click(); };
             return moar;
         }
 
@@ -59,15 +60,11 @@
             btn.style.zIndex = "420";
             btn.style.width = "8em";
 
-            if (corner.includes("Bottom"))
-                btn.style.bottom = "2em";
-            else
-                btn.style.top = "2em";
+            if (corner.includes("Bottom")) btn.style.bottom = "2em";
+            else btn.style.top = "2em";
 
-            if (corner.includes("Right"))
-                btn.style.right = "2em";
-            else
-                btn.style.left = "2em";
+            if (corner.includes("Right")) btn.style.right = "2em";
+            else btn.style.left = "2em";
 
             const tab = document.getElementById("tab_txt2img");
             tab.append(btn);
@@ -78,11 +75,12 @@
 
             const config_upscale = document.getElementById("setting_moar_upscale");
             /** @type {string}: "Off" | "Bottom" | "Result" | "Floating" */
-            const mode_upscale = config_upscale.querySelector("label.selected")
-                .querySelector("span").textContent.trim();
+            const mode_upscale = config_upscale
+                .querySelector("label.selected")
+                .querySelector("span")
+                .textContent.trim();
 
-            if (mode_upscale === "Off")
-                return;
+            if (mode_upscale === "Off") return;
 
             switch (mode_upscale) {
                 case "Bottom":
@@ -98,13 +96,15 @@
 
             const interrupt = document.getElementById("txt2img_interrupt");
             onAfterUiUpdate(() => {
-                if (uiElementIsVisible(interrupt))
-                    this.#moar.style.visibility = "hidden";
-                else
-                    this.#moar.style.visibility = "unset";
+                try {
+                    if (uiElementIsVisible(interrupt))
+                        this.#moar.style.visibility = "hidden";
+                    else this.#moar.style.visibility = "unset";
+                } catch {
+                    // Reload UI
+                }
             });
         }
-
     }
 
     onUiLoaded(() => {

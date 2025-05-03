@@ -1,11 +1,12 @@
 ﻿(function () {
     class AnotherOne {
-
         /** @returns {string} "Bottom-Right" | "Bottom-Left" | "Top-Right" | "Top-Left" */
         static #parseCorner() {
             const config_floating = document.getElementById("setting_moar_floating");
-            return config_floating.querySelector("label.selected")
-                .querySelector("span").textContent.trim();
+            return config_floating
+                .querySelector("label.selected")
+                .querySelector("span")
+                .textContent.trim();
         }
 
         /** @param {string} mode @returns {HTMLButtonElement} */
@@ -19,11 +20,9 @@
             moar.removeAttribute("title");
             moar.style.border = "none";
             moar.onclick = () => {
-                if (moar.textContent === "Interrupt")
-                    interrupt.click();
-                else
-                    generate.click();
-            }
+                if (moar.textContent === "Interrupt") interrupt.click();
+                else generate.click();
+            };
             return moar;
         }
 
@@ -59,15 +58,11 @@
             btn.style.zIndex = "420";
             btn.style.width = "8em";
 
-            if (corner.includes("Bottom"))
-                btn.style.bottom = "6em";
-            else
-                btn.style.top = "6em";
+            if (corner.includes("Bottom")) btn.style.bottom = "6em";
+            else btn.style.top = "6em";
 
-            if (corner.includes("Right"))
-                btn.style.right = "2em";
-            else
-                btn.style.left = "2em";
+            if (corner.includes("Right")) btn.style.right = "2em";
+            else btn.style.left = "2em";
 
             const tab = document.getElementById(`tab_${mode}`);
             tab.append(btn);
@@ -80,11 +75,12 @@
 
                 const config_generate = document.getElementById("setting_moar_generate");
                 /** @type {string} - "Off" | "Bottom" | "Result" | "Floating" */
-                const mode_generate = config_generate.querySelector("label.selected")
-                    .querySelector("span").textContent.trim();
+                const mode_generate = config_generate
+                    .querySelector("label.selected")
+                    .querySelector("span")
+                    .textContent.trim();
 
-                if (mode_generate === "Off")
-                    return;
+                if (mode_generate === "Off") return;
 
                 const btn = this.#clone(mode);
                 switch (mode_generate) {
@@ -101,18 +97,20 @@
 
                 const interrupt = document.getElementById(`${mode}_interrupt`);
                 onAfterUiUpdate(() => {
-                    if (uiElementIsVisible(interrupt)) {
-                        btn.textContent = "Interrupt";
-                        btn.style.background = getComputedStyle(interrupt).background;
-                    }
-                    else {
-                        btn.textContent = "Generate";
-                        btn.style.background = "";
+                    try {
+                        if (uiElementIsVisible(interrupt)) {
+                            btn.textContent = "Interrupt";
+                            btn.style.background = getComputedStyle(interrupt).background;
+                        } else {
+                            btn.textContent = "Generate";
+                            btn.style.background = "";
+                        }
+                    } catch {
+                        // Reload UI 
                     }
                 });
             }
         }
-
     }
 
     onUiLoaded(() => {
