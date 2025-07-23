@@ -98,15 +98,16 @@
                 const interrupt = document.getElementById(`${mode}_interrupt`);
                 onAfterUiUpdate(() => {
                     try {
-                        if (uiElementIsVisible(interrupt)) {
+                        if (uiElementIsVisible(interrupt) && btn.textContent === "Generate") {
                             btn.textContent = "Interrupt";
                             btn.style.background = getComputedStyle(interrupt).background;
-                        } else {
+                        }
+                        if (!uiElementIsVisible(interrupt) && btn.textContent === "Interrupt") {
                             btn.textContent = "Generate";
                             btn.style.background = "";
                         }
                     } catch {
-                        // Reload UI 
+                        // Reload UI
                     }
                 });
             }

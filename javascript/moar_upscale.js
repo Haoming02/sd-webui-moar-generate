@@ -97,9 +97,7 @@
             const interrupt = document.getElementById("txt2img_interrupt");
             onAfterUiUpdate(() => {
                 try {
-                    if (uiElementIsVisible(interrupt))
-                        this.#moar.style.visibility = "hidden";
-                    else this.#moar.style.visibility = "unset";
+                    this.#moar.style.visibility = uiElementIsVisible(interrupt) ? "hidden" : "unset";
                 } catch {
                     // Reload UI
                 }
